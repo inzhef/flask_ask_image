@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask Image</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Please upload your image</h1>
+        <p>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+        </p>
+        <form method="post" action="/" enctype="multipart/form-data">
+            <div class="file-upload">
+                <label class="file-upload-text">
+                    <div class="file-upload-icon">&#128206;</div>
+                    Choose a file
+                    <input type="file" name="file" autocomplete="off">
+                </label>
+            </div>
+            <p>
+                <input type="submit" value="Submit">
+            </p>
+        </form>
+    </div>
+</body>
+</html>

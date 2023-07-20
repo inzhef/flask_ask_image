@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask Image</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Ask your question in an image</h1>
+        <div>
+            <img src="{{ url_for('display_image', filename=filename) }}">
+            <form method="post" action="{{ url_for('get_text', filename=filename) }}">
+                <input type="text" name="input_text" placeholder="Enter your text">
+                <div class="submit-btn">
+                    <input type="submit" value="Submit">
+                    <a class="home-btn" href="{{ url_for('upload_form') }}">Home</a>
+                </div>
+            </form>
+
+            {% if result %}
+            <div class="user-QA">
+                <p>Question : {{ text }}</p>
+                <p>Answer : {{ result }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
